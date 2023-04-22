@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Notion Widget</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="card">
+        <h1 id="greeting"></h1>
+    </div>
+
+    <script>
+        var today = new Date();
+        var hrs = today.getHours();
+        var greet;
+        var card = document.querySelector('.card');
+
+        if (hrs < 12) {
+            greet = 'Good Morning, Kate';
+            card.style.background = '#F2EADE';
+        }
+        else if (hrs >= 12 && hrs <= 17) {
+            greet = 'Good Afternoon, Kate';
+            card.style.background = '#84E1BC';
+        }
+        else if (hrs >= 17 && hrs <= 24) {
+            greet = 'Good Evening, Kate';
+            card.style.background = '#8DA2FB';
+        }
+
+        document.getElementById('greeting').innerHTML = greet;
+    </script>
+
+    <style>
+        .card {
+            padding: 10px 25px 10px 25px;
+            border-radius: 1px;
+            width: 85vw;
+            color: #fff;
+            display: inline-block;
+            box-shadow: 2px 2px 1px 0px #2E373E;
+            font-family: 'Lora', serif;
+        }
+    </style>
+</body>
+</html>
