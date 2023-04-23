@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Greeting Widget</title>
+	<link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div id="greeting-widget"></div>
+
+	<style>
+		#greeting-widget {
+			background-color: #FED0CF;
+			color: #2E373E;
+			font-family: 'Lora', serif;
+			padding: 20px 30px;
+			width: 85%;
+		}
+	</style>
+
+	<script>
+		const greetingWidget = document.getElementById('greeting-widget');
+		const currentTime = new Date();
+		const currentHour = currentTime.getHours();
+
+		let greeting;
+		let backgroundColor;
+
+		if (currentHour < 12) {
+			greeting = 'Good Morning, Kate';
+			backgroundColor = '#FED0CF';
+		} else if (currentHour < 17) {
+			greeting = 'Good Afternoon, Kate';
+			backgroundColor = '#F2EADE';
+		} else {
+			greeting = 'Good Evening, Kate';
+			backgroundColor = '#DCF2FF';
+		}
+
+		const options = {
+			weekday: 'long',
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+			hour: 'numeric',
+			minute: 'numeric',
+			second: 'numeric',
+			hour12: true
+		};
+
+		const dateTimeString = currentTime.toLocaleDateString('en-US', options);
+		const dateTimeArray = dateTimeString.split(', ');
+
+		const greetingString = `
+			<div style="background-color: ${backgroundColor}; color: #2E373E; font-family: 'Lora', serif; padding: 20px 30px; width: 85%;">
+				<p style="margin: 0;">${greeting}</p>
+				<p style="margin: 0;">${dateTimeArray[1]}, ${dateTimeArray[0]}</p>
+			</div>
+		`;
+
+		greetingWidget.innerHTML = greetingString;
+	</script>
+</body>
+</html>
